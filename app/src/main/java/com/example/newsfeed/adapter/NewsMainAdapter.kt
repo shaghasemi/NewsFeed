@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfeed.R
-import com.example.newsfeed.model.NewsDataModel
+import com.example.newsfeed.model.NewsDataModelReal
 import kotlinx.android.synthetic.main.item_a_news_main.view.*
 
-class NewsMainAdapter(val newsData: List<NewsDataModel>) :
+class NewsMainAdapter(val newsData: List<NewsDataModelReal>) :
     RecyclerView.Adapter<NewsMainAdapter.NewsViewHolder>() {
 
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -22,9 +22,9 @@ class NewsMainAdapter(val newsData: List<NewsDataModel>) :
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.itemView.tv_item_a_news_title.text = newsData[position].title
-        holder.itemView.tv_item_a_news_desc.text = newsData[position].desc
-        holder.itemView.tv_item_a_news_time.text = newsData[position].time
-        holder.itemView.iv_item_a_news_thumbnail.setImageResource(newsData[position].image)
+        holder.itemView.tv_item_a_news_desc.text = newsData[position].description
+        holder.itemView.tv_item_a_news_time.text = newsData[position].publishedAt
+        holder.itemView.iv_item_a_news_thumbnail.setImageResource(newsData[position].urlToImage.toInt())
     }
 
     override fun getItemCount(): Int = newsData.size
